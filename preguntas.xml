@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<concurso>
+  <pregunta>
+    <texto>2+2</texto>
+    <respuestas>
+      <respuesta>22</respuesta>
+      <respuesta>5</respuesta>
+      <respuesta>4</respuesta>
+    </respuestas>
+  </pregunta>
+  <pregunta>
+    <texto>Capital de Libano</texto>
+    <respuestas>
+      <respuesta>Acra</respuesta>
+      <respuesta>Beirut</respuesta>
+    </respuestas>
+  </pregunta>
+  <pregunta>
+    <texto>Director de psicosis</texto>
+    <respuestas>
+      <respuesta>Hitchcock</respuesta>
+      <respuesta>Newman</respuesta>
+      <respuesta>Ford</respuesta>
+    </respuestas>
+  </pregunta>
+  <pregunta>
+    <texto>Factorial de 1</texto>
+    <respuestas>
+      <respuesta>1</respuesta>
+      <respuesta>2</respuesta>
+      <respuesta>-1</respuesta>
+      <respuesta>0</respuesta>
+    </respuestas>
+  </pregunta>
+</concurso>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<departamentos>
+  <departamento nombre="Informatica">
+    <facturacion>1800000</facturacion>
+  </departamento>
+  <departamento nombre="Compras">
+    <facturacion>45000000</facturacion>
+  </departamento>
+  <departamento nombre="Nominas">
+    <facturacion>600000000</facturacion>
+  </departamento>
+  <departamento nombre="Ventas">
+    <facturacion>184</facturacion>
+  </departamento>
+  <departamento nombre="Marketing">
+    <facturacion>1184184</facturacion>
+  </departamento>
+</departamentos>
