@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vuelos>
+  <vuelo id="ib8080">
+    <origen>Madrid</origen>
+    <destino>Lisboa</destino>
+    <hora>12:50</hora>
+  </vuelo>
+  <vuelo id="ib1000">
+    <origen>Barcelona</origen>
+    <destino>Madrid</destino>
+    <hora>16:00</hora>
+  </vuelo>
+  <vuelo id="ib2000">
+    <origen>Frankfurt</origen>
+    <destino>Madrid</destino>
+    <hora>11:30</hora>
+  </vuelo>
+  <vuelo id="ib3000">
+    <origen>Madrid</origen>
+    <destino>Frankfurt</destino>
+    <hora>10:10</hora>
+  </vuelo>
+
+  
+</vuelos>
