@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <vuelos>
-  <vuelo id="ib8080">
+  <vuelo id="ib8080" vendidos="15">
     <origen>Madrid</origen>
     <destino>Lisboa</destino>
     <hora>12:50</hora>
   </vuelo>
-  <vuelo id="ib1000">
+  <vuelo id="ib1000" vendidos="32">
     <origen>Barcelona</origen>
     <destino>Madrid</destino>
     <hora>16:00</hora>
   </vuelo>
-  <vuelo id="ib2000">
+  <vuelo id="ib2000" vendidos="10">
     <origen>Frankfurt</origen>
     <destino>Madrid</destino>
     <hora>11:30</hora>
   </vuelo>
-  <vuelo id="ib3000">
+  <vuelo id="ib3000" vendidos="0">
     <origen>Madrid</origen>
     <destino>Frankfurt</destino>
     <hora>10:10</hora>
