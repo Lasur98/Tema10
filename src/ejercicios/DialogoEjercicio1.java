@@ -36,6 +36,7 @@ public class DialogoEjercicio1 extends JDialog{
 		for(int i=0;i<origen.size();i++)
 		{
 			JRadioButton boton=new JRadioButton(origen.get(i));
+			boton.isSelected();
 			radiosOrigen[i]=boton;
 			bg.add(boton);
 			panelCentro.add(boton);
@@ -59,14 +60,16 @@ public class DialogoEjercicio1 extends JDialog{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				gestorVuelos gv=new gestorVuelos("vuelos.xml");
-				String[] array;
+				ArrayList<String> array=gv.origenes(respuesta);
 				String id ="";
+				String[] arraySplit;
 				for(int i=0;i<radiosOrigen.length;i++)
 				{
-					
-					array=radiosOrigen[i].toString().split(":");
-					id=array[0];
-					break;
+					arraySplit=array.get(i).split(":");
+					id=arraySplit[0];
+					String[] id2=radiosOrigen[i].getText().split(":");
+					if(radiosOrigen[i].isSelected() && id.equals(id2[0]))	
+						break;
 				}
 				
 				gv.compraBillete(id);

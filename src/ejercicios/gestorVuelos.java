@@ -92,10 +92,11 @@ public class gestorVuelos {
 		List<Element> lstVuelos=eVuelos.getChildren();
 		for(Element eVuelo:lstVuelos)
 		{
-			if(eVuelo.getAttribute("id").equals(id))
+			String id2=eVuelo.getAttributeValue("id");
+			if(id2.equals(id))
 			{
-				Element eHora=eVuelo.getChild("vendidos");
-				int strVenta=Integer.parseInt(eHora.getText())+1;
+				String eVenta=eVuelo.getAttributeValue("vendidos");
+				int strVenta=Integer.parseInt((eVenta))+1;
 				String strVendido=String.valueOf(strVenta);
 				
 				//Modificar atributo de vendidos
@@ -103,8 +104,9 @@ public class gestorVuelos {
 				eVuelo.setAttribute(aVen);
 				
 				grabar();
+				break;
 			}
-			break;
+			
 		}
 	}
 	
