@@ -73,7 +73,7 @@ public class GestorVuelos2 {
 		Element eVuelos=doc.getRootElement();
 		
 		Element eVuelo=new Element("vuelo");
-		eVuelo.setAttribute(new Attribute("id",id));
+		
 		
 		Element eOrigen=new Element("origen");
 		eOrigen.setText(origen);
@@ -90,8 +90,25 @@ public class GestorVuelos2 {
 		eVuelo.addContent(eDestino);
 		eVuelos.addContent(eVuelo);
 		
-		if(!id.equals(eVuelo.getAttributeValue("id")) || (!origen.equals(eVuelo.getChildText("origen"))
-				&& !destino.equals(eVuelo.getChildText("destino")) && !hora.equals(eVuelo.getChildText("hora"))))
+		//Buscamos que el id del vuelo a añadir no se encuentre ya 
+		List<Element> lstVuelos=eVuelos.getChildren();
+		Iterator it=lstVuelos.iterator();
+		boolean repetido=false;
+		while(it.hasNext())
+		{
+			Element eVuelo2=(Element) it.next();
+			String idArchivo=eVuelo2.getAttributeValue("id");
+			if(id.equals(idArchivo) || (origen.equals(eVuelo2.getChildText("origen"))&&
+					(destino.equals(eVuelo2.getChildText("destino"))&&(hora.equals(eVuelo2.getChildText("hora"))))))
+			{
+				repetido=true;
+			}
+		}
+		
+		//Una vez comprobado que no se repite el id añadimos el atributo
+		eVuelo.setAttribute(new Attribute("id",id));
+		
+		if(!repetido)
 		{
 			grabar();
 			return true;

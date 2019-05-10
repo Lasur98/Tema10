@@ -111,11 +111,11 @@ public class Ejercicio2 extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) 
 	{
 		
-		boolean funciona=gv2.anyadeVuelo((String) origenes.getSelectedItem(),destino.getText(),id.getText(),hora.getText());
+		boolean funciona=gv2.anyadeVuelo((String) origenes.getSelectedItem(),destination.getText(),id2.getText(),hour.getText());
 		if(funciona)
 		{
 			descripcionVuelo.setText(descripcionVuelo.getText()+"<br>Vuelo añadido: "+origenes.getSelectedItem()+"-"+
-					destino.getText()+"("+hora.getText()+")</br>");
+					destination.getText()+"("+hour.getText()+")</br>");
 		}
 		else
 		{
