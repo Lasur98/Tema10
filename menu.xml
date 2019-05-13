@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+  <comida>
+    <nombre>Ensalada Cesar</nombre>
+    <precio>4.50</precio>
+    <descripcion>Ensalada con lechuga y croutons</descripcion>
+    <calorias>650</calorias>
+  </comida>
+  <comida>
+    <nombre>Fabada</nombre>
+    <precio>7.80</precio>
+    <descripcion>Cocido de alubias blancas con embutido</descripcion>
+    <calorias>520</calorias>
+  </comida>
+  <comida>
+    <nombre>Chicken Burguer</nombre>
+    <precio>3.50</precio>
+    <descripcion>Hamburguesa de pollo</descripcion>
+    <calorias>400</calorias>
+  </comida>
+  <comida>
+    <nombre>Pizza 4 quesos</nombre>
+    <precio>5.50</precio>
+    <descripcion>Pizza mediana de 4 quesos</descripcion>
+    <calorias>700</calorias>
+  </comida>
+  <comida>
+    <nombre>Patatas</nombre>
+    <precio>2.5</precio>
+    <descripcion>Patatas fritas</descripcion>
+    <calorias>200</calorias>
+  </comida>
+</menu>
