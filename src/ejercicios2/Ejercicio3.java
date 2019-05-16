@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
@@ -20,17 +21,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
 
-/**
- * 
- * @author Aitor
- *
- */
 public class Ejercicio3 extends JFrame implements ActionListener{
 	
 	private JList<HoraConsulta> lsthoras;
@@ -66,6 +63,7 @@ public class Ejercicio3 extends JFrame implements ActionListener{
 				new HoraConsulta(15, 00),new HoraConsulta(15, 30)};
 		
 		lsthoras=new JList(horas_consulta);
+		lsthoras.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		JScrollPane scroll=new JScrollPane(lsthoras,JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scroll.setBounds(20, 30, 100, 200);
 		
@@ -183,18 +181,21 @@ public class Ejercicio3 extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent arg0) 
 	{
-		HoraConsulta hora=lsthoras.getSelectedValue();
-		boolean estado=gc.anyadirConsulta(lsthoras.getSelectedValue(), txtnombre.getText(),(String) medicos.getSelectedItem());
-		if(estado==true)
+		List<HoraConsulta> hora=lsthoras.getSelectedValuesList();
+		for(int i=0;i<hora.size();i++)
 		{
-			
-			JOptionPane.showMessageDialog(null, "CONSULTA ASIGNADA: "+txtnombre.getText()+"-"+(String) medicos.getSelectedItem()+
-					","+hora.toString());
-		}
-		else
-		{
-			JOptionPane.showMessageDialog(null,(String) medicos.getSelectedItem()+" ya tiene asignada la hora "+hora.toString()+"\t"+
-					"Elija otra");
+			boolean estado=gc.anyadirConsulta(hora.get(i), txtnombre.getText(),(String) medicos.getSelectedItem());
+			if(estado==true)
+			{
+				
+				JOptionPane.showMessageDialog(null, "CONSULTA ASIGNADA: "+txtnombre.getText()+"-"+(String) medicos.getSelectedItem()+
+						","+hora.get(i).toString());
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null,(String) medicos.getSelectedItem()+" ya tiene asignada la hora "+hora.get(i).toString()+"\n"+
+						"Elija otra");
+			}
 		}
 	}
 	

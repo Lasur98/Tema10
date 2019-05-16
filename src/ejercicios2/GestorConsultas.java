@@ -12,11 +12,7 @@ import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 import org.jdom2.output.Format;
 import org.jdom2.output.XMLOutputter;
-/**
- * 
- * @author Aitor
- *
- */
+
 public class GestorConsultas {
 	
 	private String nomFich;
@@ -69,27 +65,32 @@ public class GestorConsultas {
 				try 
 				{
 					String hora2=eMedico.getChild("consulta").getChildText("hora");
-					if(!eMedico.getChild("consulta").getChild("hora").equals(hora.toString()))
+					Element eHoraComparar=eMedico.getChild("consulta").getChild("hora");
+					String horaComparar=eHoraComparar.getText();
+					if(!horaComparar.equals(hora.toString()))
 					{
 						Element eConsulta=new Element("consulta");
-						Element eHora=new Element(hora.toString());
-						Element ePaciente=new Element(nombrePaciente);
+						Element eHora=new Element("hora");
+						eHora.addContent(hora.toString());
+						Element ePaciente=new Element("paciente");
+						ePaciente.addContent(nombrePaciente);
 						eConsulta.addContent(eHora);
 						eConsulta.addContent(ePaciente);
 						eMedico.addContent(eConsulta);
-						eConsultas.addContent(eMedico);
 						anyadido=true;
 					}
+					break;
 				} 
 				catch (NullPointerException e) 
 				{
 					Element eConsulta=new Element("consulta");
-					Element eHora=new Element(hora.toString());
-					Element ePaciente=new Element(nombrePaciente);
+					Element eHora=new Element("hora");
+					eHora.addContent(hora.toString());
+					Element ePaciente=new Element("paciente");
+					ePaciente.addContent(nombrePaciente);
 					eConsulta.addContent(eHora);
 					eConsulta.addContent(ePaciente);
-					eMedico.addContent(eConsulta);
-					eConsultas.addContent(eMedico);
+					eMedico.addContent(eConsulta);	
 					anyadido=true;
 				}
 			}
@@ -98,6 +99,7 @@ public class GestorConsultas {
 		return anyadido;
 		
 	}
+		
 	
 	private void grabar()
 	{

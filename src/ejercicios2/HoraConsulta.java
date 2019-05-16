@@ -13,7 +13,7 @@ public class HoraConsulta {
 
 	@Override
 	public String toString() {
-		return ""+hora+":"+minutos;
+		return hora+":"+minutos;
 	}
 	
 	
