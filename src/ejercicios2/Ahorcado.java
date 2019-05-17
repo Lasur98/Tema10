@@ -15,8 +15,7 @@ public class Ahorcado {
 	private String respuesta="";
 	private int totalVidas;
 	private int vidasRest;
-	private final static String nomFich="palabras.xml";
-	private Document doc;
+	private GestorAhorcado ga;
 	
 	public Ahorcado()
 	{
@@ -29,41 +28,11 @@ public class Ahorcado {
 	}
 	public Ahorcado(int cantLetras)
 	{
-		try 
-		{
-			SAXBuilder builder=new SAXBuilder();
-			doc=builder.build(nomFich);
-		} 
-		catch (JDOMException e) 
-		{
-			System.out.println("Documento xml erroneo");
-		} 
-		catch (IOException e) 
-		{
-			System.out.println("Fichero invalido");
-		}
+		ga=new GestorAhorcado();
 		
-		Element eAhorcado=doc.getRootElement();
-		List lstGrupos=eAhorcado.getChildren();
-		Iterator it=lstGrupos.iterator();
-		while(it.hasNext())
-		{
-			Element eGrupo=(Element) it.next();
-			if(Integer.parseInt(eGrupo.getAttributeValue("numletras"))==cantLetras)
-			{
-				List<Element> cantPalabras=eGrupo.getChildren("pal");
-				int aleatorio=(int)(1+Math.random()*cantPalabras.size());
-				for(int i=1;i<cantPalabras.size();i++)
-				{
-					if(aleatorio==i)
-					{
-						Element palabra=cantPalabras.get(i-1);
-						PALABRA=palabra.getText();
-					}
-				}
-			}
-			
-		}
+		ga.parsear();
+		PALABRA=ga.generarPalabra(PALABRA,cantLetras);
+		
 		for(int i=0;i<PALABRA.length();i++)
 		{
 			respuesta+="-";
@@ -77,16 +46,30 @@ public class Ahorcado {
 	public boolean tirar(char letra)
 	{
 		boolean acertado=false;
-		for(int i=0;i<PALABRA.length();i++)
+		String palabraAux=PALABRA.toUpperCase();
+		int ultimaLetra=0;
+		for(int i=0;i<palabraAux.length();i++)
 		{
-			if(PALABRA.charAt(i)==letra)
+			if(palabraAux.charAt(i)==letra)
 			{
-				respuesta=respuesta.substring(0,i);
-				respuesta+=letra;
-				for(int i2=respuesta.length();i2<PALABRA.length();i2++)
+				if(ultimaLetra>i)
 				{
-					respuesta+="-";
+					respuesta=respuesta.substring(0,i);
+					respuesta+=letra;
+					for(int i3=respuesta.charAt(ultimaLetra);i3<PALABRA.length();i3++)
+					{
+						respuesta+="-";
+					}
 				}
+				else
+				{
+					for(int i2=respuesta.length();i2<PALABRA.length();i2++)
+					{
+						respuesta+="-";
+					}
+					ultimaLetra=i;
+				}
+				
 				acertado=true;
 			}
 		}
@@ -115,11 +98,13 @@ public class Ahorcado {
 		return respuestaString;
 	}
 	
+	
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((doc == null) ? 0 : doc.hashCode());
+		result = prime * result + ((ga == null) ? 0 : ga.hashCode());
 		result = prime * result
 				+ ((respuesta == null) ? 0 : respuesta.hashCode());
 		result = prime * result + totalVidas;
@@ -135,10 +120,10 @@ public class Ahorcado {
 		if (getClass() != obj.getClass())
 			return false;
 		Ahorcado other = (Ahorcado) obj;
-		if (doc == null) {
-			if (other.doc != null)
+		if (ga == null) {
+			if (other.ga != null)
 				return false;
-		} else if (!doc.equals(other.doc))
+		} else if (!ga.equals(other.ga))
 			return false;
 		if (respuesta == null) {
 			if (other.respuesta != null)
@@ -150,6 +135,18 @@ public class Ahorcado {
 		if (vidasRest != other.vidasRest)
 			return false;
 		return true;
+	}
+	public static String getPALABRA() {
+		return PALABRA;
+	}
+	public String getRespuesta() {
+		return respuesta;
+	}
+	public int getVidasRest() {
+		return vidasRest;
+	}
+	public int getTotalVidas() {
+		return totalVidas;
 	}
 	public static void main(String[] args) {
 		
